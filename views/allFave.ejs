@@ -1,0 +1,10 @@
+
+
+    <ul class="list-group">
+        <% faves.forEach(fave=>{%>
+        <form action="/faves/<%= fave.imbid%>/<%= fave.title %>/?_method=DELETE" method="POST">
+            <li class="list-group-item"><a href="/movies/<%= fave.imbid%>"><%= fave.title %></a>
+             <input type="submit" class="btn btn-outline-primary" value="Delete"></li>
+        </form>
+        <%}) %> 
+      </ul>

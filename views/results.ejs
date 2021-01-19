@@ -1,6 +1,21 @@
 <% // Render your search results here %>
 <% // This is how to do comments in EJS, by the way... %>
 
+<% if(message.length>0) {%>
+    <% if( message=="It is already aadded"){%>
+
+        <div class="alert alert-warning" role="alert">
+            <%= message  %> 
+        
+        </div>
+    <%} else{%>
+        <div class="alert alert-success" role="alert">
+            <%= message  %> 
+        </div>
+    <%}%> 
+
+<%}%> 
+
 <ul>
 
     <% response.forEach(detail=>{%>
@@ -11,8 +26,10 @@
             <li>The Type is <%= detail.Type%></li>
             <br>
             <img src="<%= detail.Poster%>">
-            <form action="/:<%= detail.Title%>/<%= detail.imdbID%>" method="POST">
-                <input type="submit" value="Fave">
+            <form action="/<%= detail.Title%>/<%= detail.imdbID%>" method="POST">
+                <input type="submit" class="btn btn-outline-primary" value="Fave">
+                
+                <input type="hidden"  name="SearchText" value="<%= search %> ">
             </form>
         </ul>
     <%})%>

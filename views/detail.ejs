@@ -1,2 +1,30 @@
 <% // Render individual movie details here %>
 <% // This is how to do comments in EJS, by the way... %>
+
+<% if(message.length>0) {%>
+    <% if( message=="It is already aadded"){%>
+
+        <div class="alert alert-warning" role="alert">
+            <%= message  %> 
+        
+        </div>
+    <%} else{%>
+        <div class="alert alert-success" role="alert">
+            <%= message  %> 
+        </div>
+    <%}%> 
+
+<%}%> 
+
+<h1><%= data.Title  %> </h1>
+<img src="<%=  data.Poster %> " alt="<%= data.Title  %> ">
+<ul>
+    <li>Year: <%= data.Year  %> </li>
+    <li>Writer: <%= data.Writer %> </li>
+    <li>Actors: <%= data.Actors %> </li>
+    <li>Language: <%= data.Language %> </li>
+    <li>Country: <%=  data.Country %> </li>
+    <form action="/details/<%= data.Title%>/<%= data.imdbID%>" method="POST">
+        <input type="submit" value="Fave">
+    </form>
+</ul>
